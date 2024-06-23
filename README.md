@@ -13,11 +13,9 @@
  
 <h2>Project Overview</h2>
 
-<p>This 2048 Puzzle Game Application is a single-player sliding block puzzle game.</p>
-<p>It requests <b>nickname</b> and <b>size of the grid</b> from the player.</p>
-<p>The game's objective is to slide numbers with commands <b>(w: "up", a: "left", s: "down", d: "right")</b> on a grid to combine them to create the number <b>2048</b>.</p>
-<p>However, one can continue to play the game after reaching the goal. </p>
-<p>The game has saved highscores with players' nicknames.</p>
+<p>The Task Manager is a software system designed to help users create, manage, and track various tasks.</p>
+<p>I It provides functionalities for user registration and login, personal and shared task management, and real-time status updates.</p>
+<p>This system is ideal for individuals and teams looking to organize their work efficiently.</p>
 
 <h2>Added Features</h2>
 <p>Added features include:</p>
