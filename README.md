@@ -17,23 +17,25 @@
 <p>I It provides functionalities for user registration and login, personal and shared task management, and real-time status updates.</p>
 <p>This system is ideal for individuals and teams looking to organize their work efficiently.</p>
 
-<h2>Added Features</h2>
-<p>Added features include:</p>
+<h2>Features</h2>
 
+<h3>User Management</h3>
 <ul>
- <li><b>coloring the newest number;</b></li>
-  <li><b>automated input, no need of pressing enter after each command.</b></li>
-  
-</ul>
+ <li><b>Register</b>: Create a new user account with a unique username and password.</li>
+ <li><b>Login</b>: Access the system using your username and password.</li>
+ <li><b>Logout</b>: Securely log out from the system.</li>
 
-<h2>Instructions</h2>
+<h3>Task Management</h3>
+<ul>
+ <li><b>Add Task</b>: Create a new user account with a unique username and password.</li>
+ <li><b>Update Task</b>: Access the system using your username and password.</li>
+ <li><b>Start Task</b>: Mark a task as "In Process".</li>
+ <li><b>Finish Task</b>: Mark a task as "Done".</li>
+ <li><b>Delete Task</b>: Remove a task from the system.</li>
+ <li><b>Get Task</b>: Retrieve detailed information about a task by its ID or name.</li>
+ <li><b>List Tasks</b>: View all tasks or filter tasks by a specific date or status.</li>
+ <li><b>Dashboard</b>: A daily view of tasks due today, with options to add or remove tasks.</li>
 
-<p>Instructions on how to play the game:</p>
-
-<ol>
-  <li>Select "Start Game";</b></li>
-  <li>Enter nickname;</b></li>
-  <li>Enter size of the grid between 4 and 10;</b></li>
-  <li>Enter commands (w: "up", a: "left", s: "down", d: "right") to combine the numbers;</li>
-  <li>When the game is over, the score will appear.</li>
-</ol>
+<h2>Data Persistence</h2>
+<p>User data and task information are stored in binary files, ensuring that the data is retained across sessions.</p>
+<p>The system loads this data at startup and saves any changes made during the session.</p>
