@@ -1,5 +1,5 @@
-Faculty of Mathematics and Informatics of Sofia University
+<p>Faculty of Mathematics and Informatics of Sofia University</p>
 
-Introduction to programming course
+<p>Introduction to programming course</p>
 
-The Game 2048 University Project
+<p>The Game 2048 University Project</p>
