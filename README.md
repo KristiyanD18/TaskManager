@@ -24,6 +24,7 @@
  <li><b>Register</b>: Create a new user account with a unique username and password.</li>
  <li><b>Login</b>: Access the system using your username and password.</li>
  <li><b>Logout</b>: Securely log out from the system.</li>
+</ul>
 
 <h3>Task Management</h3>
 <ul>
@@ -35,6 +36,7 @@
  <li><b>Get Task</b>: Retrieve detailed information about a task by its ID or name.</li>
  <li><b>List Tasks</b>: View all tasks or filter tasks by a specific date or status.</li>
  <li><b>Dashboard</b>: A daily view of tasks due today, with options to add or remove tasks.</li>
+ </ul>
 
 <h2>Data Persistence</h2>
 <p>User data and task information are stored in binary files, ensuring that the data is retained across sessions.</p>
