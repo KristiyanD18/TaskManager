@@ -14,7 +14,7 @@
 <h2>Project Overview</h2>
 
 <p>The Task Manager is a software system designed to help users create, manage, and track various tasks.</p>
-<p>I It provides functionalities for user registration and login, personal and shared task management, and real-time status updates.</p>
+<p>It provides functionalities for user registration and login, personal and shared task management, and real-time status updates.</p>
 <p>This system is ideal for individuals and teams looking to organize their work efficiently.</p>
 
 <h2>Features</h2>
