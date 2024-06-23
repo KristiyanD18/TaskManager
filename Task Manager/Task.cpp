@@ -8,11 +8,6 @@ Task::Task(unsigned idxOfAuthor, unsigned id, const MyString& name, const Date& 
 	_id = id;
 }
 
-Task::Task(unsigned idxOfAuthor, unsigned id, const MyString& name, Status status, const MyString& description, time_t dueDate)
-{
-
-}
-
 MyString Task::statusToString(Status status) const
 {
 	switch (status)
@@ -40,7 +35,7 @@ void Task::printTaskInfo() const
 	std::cout << "ID: " << _id << std::endl;
 	std::cout << "Name: " << _name << std::endl;
 	std::cout << "Description: " << _description << std::endl;
-	std::cout << "Due date: ";
+	std::cout << "Due date: "; 
 	_dueDate.printDate();
 	std::cout << "Status: " << statusToString(_status) << std::endl;
 	std::cout << "-------------------------------------------" << std::endl;

@@ -40,6 +40,17 @@ void Dashboard::addTask(unsigned idxOfAuthor, const MyString& name, const MyStri
 	_tasks.push_back(Task(idxOfAuthor, id, name, dueDate, Status::ON_HOLD, description));
 }
 
+void Dashboard::deleteTaskById(unsigned id)
+{
+	int idx = getTaskIdxById(id);
+	if (idx == -1)
+	{
+		throw std::invalid_argument("No such task exists");
+	}
+
+	_tasks.erase(idx);
+}
+
 void Dashboard::printTasks() const
 {
 	size_t count = _tasks.size();
@@ -56,7 +67,28 @@ void Dashboard::printTasks() const
 	}
 }
 
-bool Dashboard::checkIfTaskExist(unsigned idxInSystem, const MyString& name, const MyString& desc, const Date& dueDate) const
+void Dashboard::addTasksDueTodayToDashboardAndRemoveOverdued()
+{
+	int countOfTasks = _tasks.size();
+
+	Date date;
+	date.setDateToToday();
+
+	for (size_t i = 0; i < countOfTasks; i++)
+	{
+		if (_tasks[i].getDueDate() == date)
+		{
+			_tasks[i].setIsInDashboard(1);
+		}
+
+		if (date > _tasks[i].getDueDate())
+		{
+			_tasks[i].setIsInDashboard(0);
+		}
+	}
+}
+
+bool Dashboard::checkIfTaskExists(unsigned idxInSystem, const MyString& name, const MyString& desc, const Date& dueDate) const
 {
 	int countOfTasks = _tasks.size();
 
@@ -64,10 +96,10 @@ bool Dashboard::checkIfTaskExist(unsigned idxInSystem, const MyString& name, con
 	{
 		if (_tasks[i].getName() == name && _tasks[i].getDescription() == desc && _tasks[i].getDescription() == desc && _tasks[i].getDueDate() == dueDate)
 		{
-			return false;
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 void Dashboard::printCompletedTasks() const
@@ -85,6 +117,19 @@ void Dashboard::printCompletedTasks() const
 	std::cout << "-------------------------------------------" << std::endl;
 }
 
+void Dashboard::printTasksWithDeadLineTo(const Date& date) const
+{
+	size_t count = _tasks.size();
+
+	for (size_t i = 0; i < count; i++)
+	{
+		if (_tasks[i].getDueDate() == date)
+		{
+			_tasks[i].printTaskInfo();
+		}
+	}
+}
+
 unsigned Dashboard::getIdxOfUser() const
 {
 	return _idxOfUser;
@@ -100,6 +145,7 @@ void Dashboard::printTasksInDashboard() const
 	{
 		if (_tasks[i].isInDashboard())
 		{
+			std::cout << "here ";
 			_tasks[i].printTaskInfo();
 		}
 	}
@@ -128,6 +174,11 @@ void Dashboard::getCurrentTaskById(unsigned id, Task*& currentT)
 	currentT = &_tasks[idx];
 }
 
+unsigned Dashboard::getCountOfTasks()
+{
+	return _tasks.size();
+}
+
 void Dashboard::sortTasksById()
 {
 	int n = _tasks.size();
@@ -143,11 +194,6 @@ void Dashboard::sortTasksById()
 			}
 		}
 	}
-}
-
-unsigned Dashboard::getCountOfTasks()
-{
-	return _tasks.size();
 }
 
 void Dashboard::writeToFile(std::ofstream& ofs) const
@@ -176,15 +222,4 @@ void Dashboard::readFromFiLe(std::ifstream& ifs)
 		task.readFromFiLe(ifs);
 		_tasks.push_back(task);
 	}
-}
-
-void Dashboard::deleteTaskById(unsigned id)
-{
-	int idx = getTaskIdxById(id);
-	if (idx == -1)
-	{
-		throw std::invalid_argument("No such task exists");
-	}
-
-	_tasks.erase(idx);
 }

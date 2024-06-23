@@ -7,7 +7,9 @@ void run()
 	TaskManager s;
 	s.readFromFiLe();
 
-	std::cout << "Register or login" << std::endl;
+	s.printCountOfUsers(); // additional function
+
+	std::cout << "Register or login: ";
 	while (true)
 	{
 		MyString command;
@@ -38,6 +40,7 @@ void run()
 			s.login(username, password); // login logic
 
 			std::cout << "Welcome back, " << username << "!" << std::endl;
+			continue;
 		}
 
 		if (s.isLoggedIn())
@@ -58,8 +61,7 @@ void run()
 				Date dueDate;
 				dueDate.readDate();
 
-				s.addTask(name, description, dueDate); // add task logic
-				std::cout << "Task added successfully!" << std::endl;
+				s.addTask(name, description, dueDate); // add task logic and prints
 			}
 			else if (command == "update-task-name")
 			{
@@ -163,10 +165,6 @@ void run()
 			}
 			else if (command == "list-tasks")
 			{
-				s.listTasks();
-			}
-			else if (command == "list-tasks")
-			{
 				std::cout << "Choose which tasks to be shown: " << std::endl;
 				std::cout << "all - show all tasks" << std::endl;
 				std::cout << "date - show tasks with deadline specific day" << std::endl;
@@ -178,7 +176,10 @@ void run()
 				}
 				else if (command == "date")
 				{
-					// s.listTasksWithDeadlineTo(const Date& dueDate);
+					std::cout << "Enter due date (YYYY-MM-DD): ";
+					Date date;
+					date.readDate();
+					s.listTasksWithDeadlineTo(date);
 				}
 				else
 				{

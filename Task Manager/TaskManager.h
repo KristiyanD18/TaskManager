@@ -17,6 +17,9 @@ private:
 	int getDashboardIdxByUser(const User*& user) const;
 
 public:
+	// additional method
+	void printCountOfUsers() const;
+
 	// authentication methods
 	void registerUser(const MyString& username, const MyString& password);
 	void login(const MyString& username, const MyString& password);
@@ -36,6 +39,7 @@ public:
 		// print methods
 	void listCompletedTasks() const;
 	void listTasks() const;
+	void listTasksWithDeadlineTo(const Date& date) const;
 
 	// dashboard methods
 	void addTaskToDashboard(unsigned id);

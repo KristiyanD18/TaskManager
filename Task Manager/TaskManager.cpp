@@ -28,6 +28,11 @@ int TaskManager::getDashboardIdxByUser(const User*& user) const
 	return -1;
 }
 
+void TaskManager::printCountOfUsers() const
+{
+	std::cout << "Count of users in the system: " << _users.size() << std::endl;
+}
+
 void TaskManager::registerUser(const MyString& username, const MyString& password)
 {
 	srand(time(NULL));
@@ -46,6 +51,7 @@ void TaskManager::login(const MyString& username, const MyString& password)
 	}
 	_currentU = &_users[idx];
 	_currentD = &_dashboards[idx];
+	_currentD->addTasksDueTodayToDashboardAndRemoveOverdued();
 }
 
 void TaskManager::logout()
@@ -61,19 +67,25 @@ bool TaskManager::isLoggedIn() const
 
 void TaskManager::addTask(const MyString& name, const MyString& desc, const Date& dueDate)
 {
-	if (_currentD->checkIfTaskExist(_currentU->getIdxInSystem(), name, desc, dueDate))
+	if (_currentD->checkIfTaskExists(_currentU->getIdxInSystem(), name, desc, dueDate))
 	{
-		_currentD->addTask(_currentU->getIdxInSystem(), name, desc, dueDate);
+		std::cout << "This task with the same name already exists!" << std::endl;
 	}
 	else
 	{
-		std::cout << "This task already exists!" << std::endl;
+		_currentD->addTask(_currentU->getIdxInSystem(), name, desc, dueDate);
+		std::cout << "Task added successfully!" << std::endl;
 	}
 }
 
 void TaskManager::listTasks() const
 {
 	_currentD->printTasks();
+}
+
+void TaskManager::listTasksWithDeadlineTo(const Date& date) const
+{
+	_currentD->printTasksWithDeadLineTo(date);
 }
 
 void TaskManager::updateTaskName(unsigned id, const MyString& newName)
@@ -139,9 +151,10 @@ void TaskManager::listDashboard() const
 	_currentD->printTasksInDashboard();
 }
 
+
 void TaskManager::addCol(const MyString& name)
 {
-	
+
 }
 
 void TaskManager::deleteCol(const MyString& name)
@@ -164,7 +177,7 @@ void TaskManager::assignTask(const MyString& colName, const MyString& userName, 
 
 }
 
-void TaskManager::listColTasks() const	
+void TaskManager::listColTasks() const
 {
 
 }
@@ -221,7 +234,6 @@ void TaskManager::readFromFiLe()
 	{
 		User user;
 		user.readFromFiLe(ifs);
-		std::cout << user.getUsername() << std::endl;
 		_users.push_back(user);
 	}
 

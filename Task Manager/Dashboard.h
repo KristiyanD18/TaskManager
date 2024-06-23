@@ -7,7 +7,7 @@
 class Dashboard
 {
 private:
-	unsigned _idxOfUser;
+	unsigned _idxOfUser = 0;
 	MyVector<Task> _tasks;
 
 	int getTaskIdxByName(const MyString& name) const;
@@ -17,22 +17,27 @@ public:
 	Dashboard() = default;
 	Dashboard(unsigned idxOfUser);
 
-	bool checkIfTaskExist(unsigned idxInSystem, const MyString& name, const MyString& desc, const Date& dueDate) const;
+	void addTasksDueTodayToDashboardAndRemoveOverdued(); // after login
+	bool checkIfTaskExists(unsigned idxInSystem, const MyString& name, const MyString& desc, const Date& dueDate) const;
 	void sortTasksById();
 
 	void addTask(unsigned idxOfAuthor, const MyString& title, const MyString& content, const Date& dueDate);
+	void deleteTaskById(unsigned id);
+
+	unsigned getIdxOfUser() const;
+
+	void getCurrentTaskByName(const MyString& title, Task*& currentTask);
+	void getCurrentTaskById(unsigned id, Task*& currentTask);
+	unsigned getCountOfTasks();
+	
+
+	// print methods
 	void printTasks() const;
 	void printTasksInDashboard() const;
 	void printCompletedTasks() const;
+	void printTasksWithDeadLineTo(const Date& date) const;
 
-	unsigned getIdxOfUser() const;
-	
-	void getCurrentTaskByName(const MyString& title, Task*& currentTask);
-	void getCurrentTaskById(unsigned id, Task*& currentTask);
-	unsigned getCountOfTasks();  // not used
-
-	void deleteTaskById(unsigned id);
-	
+	// serialization methods
 	void writeToFile(std::ofstream& ofs) const;
 	void readFromFiLe(std::ifstream& ifs);
 };

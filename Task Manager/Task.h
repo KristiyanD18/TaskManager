@@ -26,7 +26,6 @@ private:
 public:
 	Task() = default;
 	Task(unsigned idxOfAuthor, unsigned id, const MyString& name, const Date& dueDate, const Status& status, const MyString& description);
-	Task(unsigned idxOfAuthor, unsigned id, const MyString& name, Status status, const MyString& description, time_t dueDate);
 
 	MyString statusToString(Status status) const;
 
