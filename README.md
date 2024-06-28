@@ -28,8 +28,8 @@
 
 <h3>Task Management</h3>
 <ul>
- <li><b>Add Task</b>: Create a new user account with a unique username and password.</li>
- <li><b>Update Task</b>: Access the system using your username and password.</li>
+ <li><b>Add Task</b>: Add a new task.</li>
+ <li><b>Update Task</b>: Update the name of a task.</li>
  <li><b>Start Task</b>: Mark a task as "In Process".</li>
  <li><b>Finish Task</b>: Mark a task as "Done".</li>
  <li><b>Delete Task</b>: Remove a task from the system.</li>
