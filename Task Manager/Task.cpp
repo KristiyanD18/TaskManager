@@ -24,7 +24,8 @@ MyString Task::statusToString(Status status) const
 	case Status::OVERDUE:
 		return "OVERDUE";
 		break;
-	default: return "UNKNOWN";
+	default: 
+		return "UNKNOWN";
 		break;
 	}
 }

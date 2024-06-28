@@ -15,33 +15,38 @@ void run()
 		MyString command;
 		std::cin >> command;
 
-		if (command == "register")
+		if (!s.isLoggedIn())
 		{
-			std::cout << "Enter username: ";
-			MyString username, password;
-			std::cin >> username;
+			if (command == "register")
+			{
+				std::cout << "Enter username: ";
+				MyString username, password;
+				std::cin >> username;
 
-			std::cout << "Enter password: ";
-			std::cin >> password;
+				std::cout << "Enter password: ";
+				std::cin >> password;
 
-			s.registerUser(username, password); // register logic
+				s.registerUser(username, password); // register logic
 
-			std::cout << "Registered successfully!" << std::endl;
+				std::cout << "Registered successfully!" << std::endl;
+				continue;
+			}
+			else if (command == "login")
+			{
+				std::cout << "Enter username: ";
+				MyString username, password;
+				std::cin >> username;
+
+				std::cout << "Enter password: ";
+				std::cin >> password;
+
+				s.login(username, password); // login logic
+
+				std::cout << "Welcome back, " << username << "!" << std::endl;
+				continue;
+			}
 		}
-		else if (command == "login")
-		{
-			std::cout << "Enter username: ";
-			MyString username, password;
-			std::cin >> username;
 
-			std::cout << "Enter password: ";
-			std::cin >> password;
-
-			s.login(username, password); // login logic
-
-			std::cout << "Welcome back, " << username << "!" << std::endl;
-			continue;
-		}
 
 		if (s.isLoggedIn())
 		{
@@ -278,7 +283,7 @@ void run()
 		}
 		else
 		{
-			throw "Not logged in!";
+			throw std::logic_error("Not logged in!");
 		}
 	}
 }

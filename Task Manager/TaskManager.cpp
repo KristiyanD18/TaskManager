@@ -113,7 +113,9 @@ void TaskManager::startTask(unsigned id)
 
 void TaskManager::getTask(const MyString& name)
 {
-	_currentD->getCurrentTaskByName(name, _currentT);
+	Dashboard* d = _currentD;
+	d->sortTasksById();
+	d->getCurrentTaskByName(name, _currentT);
 	_currentT->printTaskInfo();
 }
 

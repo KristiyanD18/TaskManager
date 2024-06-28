@@ -145,7 +145,6 @@ void Dashboard::printTasksInDashboard() const
 	{
 		if (_tasks[i].isInDashboard())
 		{
-			std::cout << "here ";
 			_tasks[i].printTaskInfo();
 		}
 	}

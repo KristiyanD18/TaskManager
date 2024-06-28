@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 namespace
 {
 	const size_t DEFAULT_CAP = 8;
